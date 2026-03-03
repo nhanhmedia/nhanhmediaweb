@@ -1,0 +1,309 @@
+<html class="dark scroll-smooth" lang="vi"><head></head><body class="font-sans antialiased">```html
+
+
+
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>NHANHMEDIA | Cinematic Journey</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#C82333",
+                        "deep-red": "#C82333",
+                        "background-dark": "#050505",
+                    },
+                    fontFamily: {
+                        "display": ["Syne", "sans-serif"],
+                        "sans": ["Inter", "sans-serif"]
+                    },
+                },
+            },
+        }
+    </script>
+<style type="text/tailwindcss">
+        @layer base {
+            body {
+                @apply bg-background-dark text-white selection:bg-primary selection:text-white;
+            }
+        }
+        .font-heavy {
+            font-family: 'Syne', sans-serif;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: -0.04em;
+            line-height: 0.9;
+        }
+        .full-bleed-section {
+            @apply min-h-screen relative flex items-center justify-center overflow-hidden;
+        }
+        .glass-nav {
+            background: rgba(5, 5, 5, 0.7);
+            backdrop-filter: blur(20px);
+        }
+        .cinematic-overlay {
+            background: linear-gradient(to bottom, rgba(5,5,5,0.4) 0%, rgba(5,5,5,0.7) 50%, rgba(5,5,5,1) 100%);
+        }
+        @keyframes pulse-red {
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(200, 35, 51, 0.7); }
+            70% { transform: scale(1.1); box-shadow: 0 0 0 20px rgba(200, 35, 51, 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(200, 35, 51, 0); }
+        }
+        .btn-heartbeat {
+            animation: pulse-red 2s infinite;
+        }
+        .section-num {
+            -webkit-text-stroke: 1px rgba(255,255,255,0.1);
+            color: transparent;
+        }
+        .snap-container {
+            scroll-snap-type: y mandatory;
+            height: 100vh;
+            overflow-y: scroll;
+        }
+        .snap-section {
+            scroll-snap-align: start;
+            scroll-snap-stop: always;
+        }
+    </style>
+
+
+<nav class="fixed top-0 w-full z-[100] glass-nav border-b border-white/5">
+<div class="max-w-[1600px] mx-auto px-6 lg:px-12 h-20 flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-3xl">movie_filter</span>
+<span class="text-xl font-heavy tracking-tighter">NHANHMEDIA</span>
+</div>
+<div class="hidden lg:flex items-center gap-12">
+<a class="text-[10px] font-bold hover:text-primary transition-colors tracking-[0.2em] uppercase" href="#music-videos">Music Video</a>
+<a class="text-[10px] font-bold hover:text-primary transition-colors tracking-[0.2em] uppercase" href="#tvc">TVC / Viral</a>
+<a class="text-[10px] font-bold hover:text-primary transition-colors tracking-[0.2em] uppercase" href="#philosophy">Triết Lý</a>
+<a class="text-[10px] font-bold hover:text-primary transition-colors tracking-[0.2em] uppercase" href="#services">Dịch Vụ</a>
+<div class="flex items-center gap-3 ml-4 border-l border-white/10 pl-8">
+<span class="text-[10px] font-bold text-primary cursor-default">VN</span>
+<span class="text-[10px] font-bold text-white/20">|</span>
+<a class="text-[10px] font-bold text-white/40 hover:text-white transition-colors" href="#">EN</a>
+</div>
+</div>
+<a class="bg-primary text-white px-8 py-3 text-[10px] font-bold tracking-widest uppercase hover:bg-white hover:text-black transition-all" href="#contact">Liên Hệ</a>
+</div>
+</nav>
+<main class="snap-container">
+<section class="snap-section full-bleed-section">
+<div class="absolute inset-0 z-0">
+<img alt="Cinematic Hero" class="w-full h-full object-cover scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD8TCvpq4Wx6mcJM4kwR06gXCZhsQ0GWBFAfFK9sAJR5R1sVy2m3iQ3MyMF4yoJwhNdav8pAn9iiiMSKX_ZTimeGslDg3kZMPmf-thz8j2ZIpC8aYmJQxQlY83-by1Amk0UZcr4xjdM2CwgdAwts0DOYMock7dinDB6LRlxqpGlYaR5pTrRrtTqvJsAnc4xXMZfIP_pn3UsGm88ozwTIW1rmeUQc2DFL1m7LPHRfBrPnI_cVrpBm_TxEcU4IK7nqbwFzRylOZGfsg9i"/>
+<div class="absolute inset-0 cinematic-overlay"></div>
+</div>
+<div class="relative z-20 text-center px-6 max-w-6xl mt-20">
+<span class="text-primary font-bold tracking-[0.6em] text-[10px] mb-8 block uppercase">Originals Production House</span>
+<h1 class="text-[clamp(3rem,10vw,8.5rem)] font-heavy mb-8">TẦM NHÌN <span class="text-primary italic">ĐIỆN ẢNH</span><br/>ĐÍCH THỰC.</h1>
+<p class="text-lg md:text-xl text-white/60 mb-12 max-w-2xl mx-auto font-light leading-relaxed">
+                    Chúng tôi không chỉ ghi hình. Chúng tôi kiến tạo di sản thị giác, định vị thương hiệu ở một đẳng cấp hoàn toàn khác biệt.
+                </p>
+<div class="flex flex-col sm:flex-row items-center justify-center gap-6">
+<button class="w-full sm:w-auto bg-white text-black px-12 py-5 font-bold text-sm tracking-widest uppercase hover:bg-primary hover:text-white transition-all">Xem Showreel</button>
+<button class="w-full sm:w-auto border border-white/20 text-white px-12 py-5 font-bold text-sm tracking-widest uppercase hover:bg-white/10 transition-all">Dự Án MV</button>
+</div>
+</div>
+<div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-30">
+<span class="text-[10px] font-bold tracking-[0.3em] uppercase">Scroll</span>
+<span class="material-symbols-outlined animate-bounce">expand_more</span>
+</div>
+</section>
+<section class="snap-section full-bleed-section bg-[#080808]" id="philosophy">
+<div class="absolute top-0 left-0 w-full h-full opacity-20 pointer-events-none">
+<div class="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-primary/20 blur-[150px] rounded-full"></div>
+</div>
+<div class="relative z-20 max-w-5xl mx-auto px-6 text-center lg:text-left">
+<div class="grid lg:grid-cols-2 gap-20 items-center">
+<div>
+<span class="text-primary font-bold tracking-[0.4em] text-[10px] mb-6 block uppercase">Triết Lý Sáng Tạo</span>
+<h2 class="text-5xl md:text-7xl font-heavy mb-10">HÌNH ẢNH LÀ <span class="text-primary">NGÔN NGỮ</span> KHÔNG LỜI.</h2>
+<p class="text-xl text-white/50 leading-relaxed mb-8">
+                            Sự khác biệt giữa một video đại trà và một tác phẩm điện ảnh nằm ở <strong class="text-white">Tư duy Thẩm mỹ</strong> và <strong class="text-white">Sự thấu hiểu Câu chuyện</strong>.
+                        </p>
+<a class="inline-flex items-center gap-4 text-primary font-bold tracking-widest uppercase group" href="#contact">
+                            Bắt đầu hành trình <span class="material-symbols-outlined group-hover:translate-x-2 transition-transform">arrow_right_alt</span>
+</a>
+</div>
+<div class="hidden lg:block space-y-8">
+<div class="p-8 border-l-2 border-primary bg-white/[0.02]">
+<h3 class="text-sm font-bold mb-4 tracking-widest uppercase">Tránh Sự Thỏa Hiệp</h3>
+<p class="text-sm text-white/40 leading-relaxed">Thành phẩm rập khuôn sẽ làm giảm niềm tin từ khách hàng mục tiêu và đi lệch định vị cao cấp.</p>
+</div>
+<div class="p-8 border-l-2 border-white/10 bg-white/[0.01]">
+<h3 class="text-sm font-bold mb-4 tracking-widest uppercase">Tôn Vinh Giá Trị</h3>
+<p class="text-sm text-white/40 leading-relaxed">Mỗi khung hình là một cam kết về chất lượng, bảo chứng cho sự chuyên nghiệp của thương hiệu.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="snap-section full-bleed-section bg-background-dark" id="music-videos">
+<div class="max-w-[1600px] w-full mx-auto px-6 lg:px-12 flex flex-col justify-center h-full py-20">
+<div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+<div>
+<span class="text-primary font-bold tracking-[0.4em] text-[10px] mb-4 block uppercase">Portfolio</span>
+<h2 class="text-6xl md:text-8xl font-heavy italic">MUSIC VIDEOS</h2>
+</div>
+<div class="flex gap-12 text-right">
+<div>
+<div class="text-3xl font-heavy text-primary">100+</div>
+<div class="text-[10px] font-bold tracking-widest text-white/40 uppercase">Sản Phẩm</div>
+</div>
+<div>
+<div class="text-3xl font-heavy text-primary">500M+</div>
+<div class="text-[10px] font-bold tracking-widest text-white/40 uppercase">Lượt Xem</div>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 h-[50vh] min-h-[400px]">
+<div class="group relative overflow-hidden bg-zinc-900">
+<img alt="MV Project" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCp7xx6-DwV0Kuu03VEXK3zrMj-Msf7NhrrDw0M5NRQAmdG9-c3LxCs6elmaYodxAIlhxiJfw7w_6yEYZXCgGzLLX5-nZPGzCANxDUCPIkYVmxwo0D2sI3Nblhau_ZX8XAYod_CZ8JzzPUxO86j-crRexzR3qw5Dta6FMC2vvcvOHQR5i22zOJHeR7vRfn7qasPDuKJO6EV3BkDN3HvtuTUK5nJFLM2_Txm_6WQoj4EThC30WK2q-BehvD2XlLSOahU_NG9KAv70UtD"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80"></div>
+<div class="absolute bottom-8 left-8">
+<span class="text-[10px] font-bold text-primary tracking-widest mb-2 block">DOÃN HIẾU</span>
+<h4 class="text-2xl font-heavy uppercase">Tháng Năm Rực Rỡ</h4>
+</div>
+</div>
+<div class="group relative overflow-hidden bg-zinc-900">
+<img alt="MV Project" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDtF8YlKw2dsN8IWyxhdlXUMSvGn7Onu8Kijlpp4a3O4RCan8K-b3QfnnDLnGVtbulXqV2GnsAwE1YlQJxh5gwHDEMvO8SdWlz9fkaiVDjh3narPK8MpWxHU1MIWZtzay_xBp8p7HC80sAxodjnyp9to4I9iIy1IRrWkZfE8Ed9V3sbV6aULrJei-h5b89G1se37TwNvNfDGm3fVYzdutlEnAkJg0vDYb3EcCwbiuxvmiNTJZs9wfyTjaEQfm-Ie3i4o9ZNXsU2EgKu"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80"></div>
+<div class="absolute bottom-8 left-8">
+<span class="text-[10px] font-bold text-primary tracking-widest mb-2 block">HUỲNH JAMES x PJNBOYS</span>
+<h4 class="text-2xl font-heavy uppercase">Cầu Vừa Đủ Xài</h4>
+</div>
+</div>
+<div class="group relative overflow-hidden bg-zinc-900">
+<img alt="MV Project" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDbkguW5E-Ka6qlPeRpldvlpW08qLAzf8V-R-KcGXEHPc2ytlhJ51tvV3bG9WN7sQdEECkO4VpzpGM9JWwnmV8tfndOxKcp_5arY-vuFXX4xM2DmVLq8vlQStQ-9wIeacjGASzAT29ptLPqf9OhZdvb8QFg4kcnhGhB9hHyVLogGKV_4hkNDWRbmUlJ0mE_egRcEHYm5w1moIu1RX9VPMUM62yrMw2lX-A3AX7AbyLxu5ui8jGJFjNDGV1fD2Hqqbeke00ReLUsMY2m"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80"></div>
+<div class="absolute bottom-8 left-8">
+<span class="text-[10px] font-bold text-primary tracking-widest mb-2 block">ARTIST PROJECT</span>
+<h4 class="text-2xl font-heavy uppercase">Lụm</h4>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="snap-section full-bleed-section bg-[#0a0a0a]" id="tvc">
+<div class="max-w-[1600px] w-full mx-auto px-6 lg:px-12 flex flex-col justify-center h-full py-20">
+<div class="flex justify-between items-end mb-16">
+<div>
+<span class="text-primary font-bold tracking-[0.4em] text-[10px] mb-4 block uppercase">Commercials</span>
+<h2 class="text-6xl md:text-8xl font-heavy">TVC &amp; VIRAL</h2>
+</div>
+<a class="text-[10px] font-bold tracking-[0.2em] uppercase border-b border-primary pb-2 hover:text-primary transition-colors" href="#">Tất cả dự án</a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8 h-[55vh] min-h-[450px]">
+<div class="group relative overflow-hidden border border-white/5">
+<div class="absolute inset-0 flex items-center justify-center text-white/5 font-heavy text-9xl">LG</div>
+<img alt="LG TVC" class="w-full h-full object-cover opacity-60 group-hover:opacity-100 group-hover:scale-105 transition-all duration-1000" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAlaD69qHHQHjfQcTSV1UsUmxuOsQLJNo9j8OF_JWtqQ41jUP6ogvDOHD72ynlUdzl-41JXjfuMJ18oDZu_B9-aHFVMbRqVnAD0CGmzLT-qZYv6ktOZHMfcqUf9yqJik7SumDJjqCJCqC5Lay6MJ5i77_mXgMfnalM-bsBOwqffvw5YR00FTBiyd3xlrPYvLdmrVkIKY-b7eN_KtRErJzStvvdT5bPqjOBg1cuNCxcGeUGRlUqtCny02uER-1FthXSl53bV-F-iZ7zV"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+<div class="absolute bottom-10 left-10">
+<span class="text-[10px] font-bold text-primary tracking-widest mb-2 block">BRAND COMMERCIAL</span>
+<h4 class="text-4xl font-heavy uppercase">LG | ĐẲNG CẤP DẪN ĐẦU</h4>
+</div>
+</div>
+<div class="group relative overflow-hidden border border-white/5">
+<div class="absolute inset-0 flex items-center justify-center text-white/5 font-heavy text-9xl">POPEYES</div>
+<img alt="Popeyes TVC" class="w-full h-full object-cover opacity-60 group-hover:opacity-100 group-hover:scale-105 transition-all duration-1000" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB6G1qj2hta0FzbMB7EGO5ibUNRux1-xiIFikNZmNGaY8aqfKJ1TFpDnUbvEYcVdplXiY_Hs-fgRRf9gFLZNZG7VvcaTsFUWqgA9m0fVEI3AqZVdaO4wVKF5Qite9NTQqBs4ytS5Z-mTZ0Ky66PN9ML4XHV3uwsyZdoxHmbUWkxZfymFY1PnAfVv1cgtNvu3KBa0HmP4DOb1ofHZuwLGrfuqrVuVhOVVHRqED8SzZgGwFkNL5K6uOimjQ38OxgK5R3IH4WfLhQl_Kos"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+<div class="absolute bottom-10 left-10">
+<span class="text-[10px] font-bold text-primary tracking-widest mb-2 block">VIRAL CAMPAIGN</span>
+<h4 class="text-4xl font-heavy uppercase">VỊ NGON KHÔNG ĐỐI THỦ</h4>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="snap-section full-bleed-section bg-background-dark overflow-hidden" id="services">
+<div class="absolute -right-20 top-0 text-[20rem] font-heavy text-white/[0.02] select-none uppercase leading-none">Services</div>
+<div class="max-w-7xl mx-auto px-6 w-full relative z-10">
+<div class="text-center mb-24">
+<span class="text-primary font-bold tracking-[0.4em] text-[10px] mb-4 block uppercase">Trụ Cột Sáng Tạo</span>
+<h2 class="text-5xl md:text-7xl font-heavy">CHẤT LƯỢNG <span class="italic text-primary">KHÔNG</span> NGẪU NHIÊN.</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-1px bg-white/10">
+<div class="bg-background-dark p-12 lg:p-16 hover:bg-zinc-900/50 transition-all group">
+<div class="section-num text-7xl font-heavy mb-8 group-hover:text-primary transition-colors">01</div>
+<h4 class="text-xl font-heavy mb-6 tracking-wide">KỊCH BẢN CHẠM CẢM XÚC</h4>
+<p class="text-sm text-white/40 leading-relaxed uppercase tracking-widest">Biến thông điệp khô khan thành trải nghiệm chân thực, thuyết phục ngay từ giây đầu tiên.</p>
+</div>
+<div class="bg-background-dark p-12 lg:p-16 hover:bg-zinc-900/50 transition-all group border-x border-white/10">
+<div class="section-num text-7xl font-heavy mb-8 group-hover:text-primary transition-colors">02</div>
+<h4 class="text-xl font-heavy mb-6 tracking-wide">THỊ GIÁC ĐIỆN ẢNH</h4>
+<p class="text-sm text-white/40 leading-relaxed uppercase tracking-widest">Ứng dụng nghệ thuật ánh sáng và ngôn ngữ chuyển động máy quay khắt khe nhất.</p>
+</div>
+<div class="bg-background-dark p-12 lg:p-16 hover:bg-zinc-900/50 transition-all group">
+<div class="section-num text-7xl font-heavy mb-8 group-hover:text-primary transition-colors">03</div>
+<h4 class="text-xl font-heavy mb-6 tracking-wide">HẬU KỲ HOÀN MỸ</h4>
+<p class="text-sm text-white/40 leading-relaxed uppercase tracking-widest">Color Grading độc bản, tạo nên "Look &amp; Feel" đậm chất điện ảnh cho từng khung hình.</p>
+</div>
+</div>
+<div class="mt-20 flex justify-center">
+<a class="px-16 py-6 bg-primary text-white font-heavy text-sm tracking-[0.3em] hover:bg-white hover:text-black transition-all" href="#contact">LIÊN HỆ ĐẶT LỊCH</a>
+</div>
+</div>
+</section>
+<footer class="snap-section min-h-screen bg-black flex flex-col justify-between pt-32 pb-12 px-6 lg:px-12" id="contact">
+<div class="max-w-[1600px] w-full mx-auto">
+<div class="grid lg:grid-cols-2 gap-24 items-start">
+<div>
+<h2 class="text-6xl md:text-8xl font-heavy leading-[0.85] mb-12">CHÚNG TÔI <br/><span class="text-primary italic">KHÔNG</span> SẢN XUẤT<br/> ĐẠI TRÀ.</h2>
+<p class="text-xl text-white/50 mb-12 max-w-xl">Để bảo chứng cho chất lượng và sự tập trung cao độ, Nhanhmedia chỉ tiếp nhận giới hạn dự án mỗi tháng.</p>
+<div class="space-y-8">
+<div class="flex items-center gap-6">
+<span class="w-12 h-px bg-primary"></span>
+<span class="text-xl font-medium tracking-tight">0833 601 662</span>
+</div>
+<div class="flex items-center gap-6">
+<span class="w-12 h-px bg-primary"></span>
+<span class="text-xl font-medium tracking-tight">nhanhmedia@gmail.com</span>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-12 lg:pt-12">
+<div>
+<h4 class="text-[10px] font-bold tracking-[0.4em] text-primary uppercase mb-10">Liên Kết</h4>
+<ul class="space-y-6">
+<li><a class="text-sm font-bold tracking-widest uppercase hover:text-primary transition-colors" href="#">Showreel 2024</a></li>
+<li><a class="text-sm font-bold tracking-widest uppercase hover:text-primary transition-colors" href="#">Dịch Vụ</a></li>
+<li><a class="text-sm font-bold tracking-widest uppercase hover:text-primary transition-colors" href="#">BTS</a></li>
+<li><a class="text-sm font-bold tracking-widest uppercase hover:text-primary transition-colors" href="#">Tuyển Dụng</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-[10px] font-bold tracking-[0.4em] text-primary uppercase mb-10">Mạng Xã Hội</h4>
+<ul class="space-y-6">
+<li><a class="text-sm font-bold tracking-widest uppercase hover:text-primary transition-colors" href="#">Facebook</a></li>
+<li><a class="text-sm font-bold tracking-widest uppercase hover:text-primary transition-colors" href="#">Instagram</a></li>
+<li><a class="text-sm font-bold tracking-widest uppercase hover:text-primary transition-colors" href="#">Youtube</a></li>
+<li><a class="text-sm font-bold tracking-widest uppercase hover:text-primary transition-colors" href="#">Vimeo</a></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="max-w-[1600px] w-full mx-auto border-t border-white/5 pt-12 flex flex-col md:flex-row justify-between items-center gap-8">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary">movie_filter</span>
+<span class="text-lg font-heavy tracking-tighter uppercase">NHANHMEDIA</span>
+</div>
+<p class="text-[10px] font-bold tracking-[0.2em] text-white/30 uppercase">© 2024 NHANHMEDIA. ALL RIGHTS RESERVED.</p>
+<div class="flex gap-12 text-[10px] font-bold tracking-[0.2em] text-white/30 uppercase">
+<a class="hover:text-white transition-colors" href="#">Privacy</a>
+<a class="hover:text-white transition-colors" href="#">Terms</a>
+</div>
+</div>
+</footer>
+</main>
+<a class="fixed bottom-8 right-8 z-[150] bg-primary text-white w-20 h-20 rounded-full flex items-center justify-center btn-heartbeat shadow-2xl group" href="#contact">
+<span class="material-symbols-outlined text-3xl group-hover:scale-110 transition-transform">mail</span>
+</a>
+
+```</body></html>
