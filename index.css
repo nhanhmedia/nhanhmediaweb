@@ -1,0 +1,82 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;800&family=Inter:wght@400;600;800&family=Playfair+Display:ital,wght@0,700;1,700&family=Montserrat:wght@700;800&family=Oswald:wght@700&family=Lora:ital,wght@0,700;1,700&family=Nunito:wght@700;800&family=Merriweather:wght@700;900&family=Be+Vietnam+Pro:wght@700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #e11d48;
+  --color-background-light: #1a1a1a;
+  --color-background-dark: #050505;
+  --font-display: "Space Grotesk", sans-serif;
+  --radius-lg: 0.25rem;
+  --radius-xl: 0.5rem;
+  --radius-full: 9999px;
+}
+
+body {
+  background-color: var(--color-background-dark);
+  color: #f1f5f9;
+  font-family: var(--font-display);
+}
+
+.cinematic-text {
+  text-transform: uppercase;
+  letter-spacing: -0.05em;
+  font-weight: 800;
+  font-style: italic;
+}
+
+.gradient-overlay {
+  background: linear-gradient(0deg, rgba(5,5,5,1) 0%, rgba(5,5,5,0.4) 50%, rgba(5,5,5,0.8) 100%);
+}
+
+.red-glow:hover {
+  box-shadow: 0 0 20px rgba(225, 29, 72, 0.6);
+}
+
+@keyframes pulse-integrated {
+  0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(225, 29, 72, 0.7); }
+  50% { transform: scale(1.05); box-shadow: 0 0 0 20px rgba(225, 29, 72, 0); }
+  100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(225, 29, 72, 0); }
+}
+
+.animate-pulse-integrated {
+  animation: pulse-integrated 2s infinite cubic-bezier(0.4, 0, 0.6, 1);
+}
+
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  10% { transform: scale(1.05); }
+  20% { transform: scale(1); }
+  30% { transform: scale(1.05); }
+  40% { transform: scale(1); }
+}
+
+.animate-heartbeat {
+  animation: heartbeat 2s infinite cubic-bezier(0.4, 0, 0.6, 1);
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-100%); }
+}
+
+@keyframes marquee2 {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(0%); }
+}
+
+.animate-marquee {
+  animation: marquee 60s linear infinite;
+}
+
+.animate-marquee2 {
+  animation: marquee2 60s linear infinite;
+}
