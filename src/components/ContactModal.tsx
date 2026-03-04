@@ -13,6 +13,8 @@ const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) => {
     budget: ''
   });
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState('');
 
   if (!isOpen) return null;
 
@@ -21,16 +23,40 @@ const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) => {
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Simulate sending data
-    console.log('Form data submitted:', formData);
-    setSubmitted(true);
-    setTimeout(() => {
-      setSubmitted(false);
-      onClose();
-      setFormData({ email: '', phone: '', project: '', budget: '' });
-    }, 2000);
+    setIsSubmitting(true);
+    setError('');
+
+    try {
+      const response = await fetch('https://formspree.io/f/mdalqzje', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formData)
+      });
+
+      if (response.ok) {
+        setSubmitted(true);
+        setTimeout(() => {
+          setSubmitted(false);
+          onClose();
+          setFormData({ email: '', phone: '', project: '', budget: '' });
+        }, 3000);
+      } else {
+        const data = await response.json();
+        if (Object.hasOwn(data, 'errors')) {
+          setError(data.errors.map((err: any) => err.message).join(', '));
+        } else {
+          setError('Có lỗi xảy ra. Vui lòng thử lại sau.');
+        }
+      }
+    } catch (err) {
+      setError('Lỗi kết nối. Vui lòng kiểm tra lại mạng.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -50,10 +76,15 @@ const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) => {
           <div className="text-center py-12">
             <span className="material-symbols-outlined text-primary text-6xl mb-4">check_circle</span>
             <h3 className="text-xl font-bold text-white mb-2">Gửi thành công!</h3>
-            <p className="text-slate-400">Cảm ơn bạn đã quan tâm đến dịch vụ của NhanhMedia.</p>
+            <p className="text-slate-400">Cảm ơn bạn đã quan tâm đến dịch vụ của NhanhMedia. Chúng tôi sẽ liên hệ lại sớm nhất.</p>
           </div>
         ) : (
           <form onSubmit={handleSubmit} className="space-y-4">
+            {error && (
+              <div className="bg-red-500/10 border border-red-500/50 text-red-500 text-sm p-3 rounded-lg mb-4">
+                {error}
+              </div>
+            )}
             <div>
               <label className="block text-xs font-bold tracking-widest uppercase text-slate-400 mb-2">Email</label>
               <input 
@@ -107,9 +138,17 @@ const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) => {
             </div>
             <button 
               type="submit"
-              className="w-full bg-primary text-white font-bold tracking-widest uppercase py-4 rounded-lg hover:bg-white hover:text-black transition-colors mt-6"
+              disabled={isSubmitting}
+              className={`w-full bg-primary text-white font-bold tracking-widest uppercase py-4 rounded-lg hover:bg-white hover:text-black transition-colors mt-6 flex items-center justify-center ${isSubmitting ? 'opacity-70 cursor-not-allowed' : ''}`}
             >
-              GỬI THÔNG TIN
+              {isSubmitting ? (
+                <>
+                  <span className="material-symbols-outlined animate-spin mr-2">progress_activity</span>
+                  ĐANG GỬI...
+                </>
+              ) : (
+                'GỬI THÔNG TIN'
+              )}
             </button>
           </form>
         )}

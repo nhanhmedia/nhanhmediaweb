@@ -73,10 +73,28 @@ body {
   100% { transform: translateX(0%); }
 }
 
+@keyframes marquee-reverse {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(0%); }
+}
+
+@keyframes marquee-reverse2 {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(100%); }
+}
+
 .animate-marquee {
-  animation: marquee 60s linear infinite;
+  animation: marquee 40s linear infinite;
 }
 
 .animate-marquee2 {
-  animation: marquee2 60s linear infinite;
+  animation: marquee2 40s linear infinite;
+}
+
+.animate-marquee-reverse {
+  animation: marquee-reverse 50s linear infinite;
+}
+
+.animate-marquee-reverse2 {
+  animation: marquee-reverse2 50s linear infinite;
 }

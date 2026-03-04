@@ -25,11 +25,11 @@ const Navbar = () => {
         <h1 className="cinematic-text text-2xl tracking-tighter text-white">NHANH<span className="text-primary">MEDIA</span></h1>
       </div>
       <nav className="hidden md:flex items-center gap-10">
-        <a className="text-xs font-bold tracking-[0.2em] uppercase hover:text-primary transition-colors" href="#">Music Videos</a>
-        <a className="text-xs font-bold tracking-[0.2em] uppercase hover:text-primary transition-colors" href="#">TVC</a>
-        <a className="text-xs font-bold tracking-[0.2em] uppercase hover:text-primary transition-colors" href="#">Phim Ngắn</a>
-        <a className="text-xs font-bold tracking-[0.2em] uppercase hover:text-primary transition-colors" href="#">Portfolio</a>
-        <a className="text-xs font-bold tracking-[0.2em] uppercase hover:text-primary transition-colors" href="#">Về Chúng Tôi</a>
+        <a className="text-xs font-bold tracking-[0.2em] uppercase hover:text-primary transition-colors" href="#music-videos">Music Videos</a>
+        <a className="text-xs font-bold tracking-[0.2em] uppercase hover:text-primary transition-colors" href="#tvc-projects">TVC</a>
+        <a className="text-xs font-bold tracking-[0.2em] uppercase hover:text-primary transition-colors" href="#film-ost-projects">Phim Ngắn</a>
+        <a className="text-xs font-bold tracking-[0.2em] uppercase hover:text-primary transition-colors" href="#original-content">Sáng Tạo</a>
+        <a className="text-xs font-bold tracking-[0.2em] uppercase hover:text-primary transition-colors" href="#about-us">Về Chúng Tôi</a>
       </nav>
       <div className="flex items-center gap-4">
         <div className="flex items-center gap-6">
@@ -62,7 +62,7 @@ const Hero = ({ onOpenVideo, onOpenContact }: { onOpenVideo: (url: string) => vo
           <span className="material-symbols-outlined">arrow_forward</span>
         </button>
         <button onClick={() => onOpenVideo('https://www.youtube.com/watch?v=CbV9iid8OgA')} className="border border-white/30 backdrop-blur-sm text-white px-10 py-5 cinematic-text text-lg hover:bg-white hover:text-black transition-all">
-          XEM SHOWREEL 2024
+          XEM SHOWREEL 2025
         </button>
       </div>
     </div>
@@ -81,7 +81,7 @@ const Vision = () => (
         <h2 className="cinematic-text text-5xl md:text-7xl text-white mb-12 leading-tight">SỰ KHÁC BIỆT<br/>TRONG TẦM NHÌN</h2>
         
         <div className="bg-white/5 p-8 border-l-2 border-primary/30">
-          <h3 className="text-primary font-bold uppercase tracking-widest text-sm mb-6">CHÚNG TÔI KHÔNG CHẤP NHẬN SỰ TRUNG BÌNH:</h3>
+          <h3 className="text-primary font-bold uppercase tracking-widest text-sm mb-6">CHÚNG TÔI KHÔNG CHẤP NHẬN:</h3>
           <ul className="space-y-4 text-slate-400 text-sm leading-relaxed">
             <li className="flex gap-4"><span className="text-primary font-bold">01</span> Thành phẩm rập khuôn, thiếu bản sắc thương hiệu.</li>
             <li className="flex gap-4"><span className="text-primary font-bold">02</span> Quy trình thiếu chuyên nghiệp làm chậm tiến độ chiến dịch.</li>
@@ -101,13 +101,22 @@ const Vision = () => (
   </section>
 );
 
-const Services = () => {
+const Services = ({ onOpenContact }: { onOpenContact: () => void }) => {
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
     }
   };
+
+  const services = [
+    { icon: "movie_filter", title: "SẢN XUẤT MUSIC VIDEO", desc: "Hình ảnh điện ảnh cao cấp cho bản hit tiếp theo. Tối ưu cho nghệ sĩ chuyên nghiệp." },
+    { icon: "ads_click", title: "TVC & PHIM QUẢNG CÁO", desc: "Sự xuất sắc trong thương mại thúc đẩy chuyển đổi. Hiệu quả cho Giám đốc Thương hiệu." },
+    { icon: "photo_camera", title: "CHỤP ẢNH CHUYÊN NGHIỆP", desc: "Ghi lại bản sắc thương hiệu qua lăng kính thời trang cao cấp. Visual Key Visual đẳng cấp." },
+    { icon: "video_settings", title: "HẬU KỲ CHUYÊN NGHIỆP", desc: "Chỉnh màu & VFX đẳng cấp thế giới. Hoàn thiện từng pixel theo chuẩn Hollywood." },
+    { icon: "lightbulb", title: "Ý TƯỞNG SÁNG TẠO", desc: "Kịch bản phân cảnh & định hướng chiến lược. Định hình thông điệp từ cốt lõi." },
+    { icon: "smart_toy", title: "SẢN XUẤT AI", desc: "Ứng dụng AI tiên tiến trong sản xuất hình ảnh và video. Tối ưu chi phí và thời gian." }
+  ];
 
   return (
     <section className="py-24 px-6 lg:px-20 bg-background-light border-b border-white/5" id="services">
@@ -120,54 +129,23 @@ const Services = () => {
           </div>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-6 gap-4">
-          <div className="bg-background-dark p-6 flex flex-col justify-between min-h-[350px] group hover:border-primary/50 border border-transparent transition-colors">
-            <div>
-              <span className="material-symbols-outlined text-primary text-3xl mb-6">movie_filter</span>
-              <h4 className="cinematic-text text-lg text-white mb-4">MUSIC VIDEO<br/>PRODUCTION</h4>
-              <p className="text-slate-400 text-xs leading-relaxed">High-end cinematic visuals for the next hit. Tối ưu cho nghệ sĩ chuyên nghiệp.</p>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {services.map((service, idx) => (
+            <div key={idx} className="bg-background-dark p-8 flex flex-col justify-between min-h-[300px] group hover:border-primary/50 border border-white/5 transition-all duration-500">
+              <div>
+                <span className="material-symbols-outlined text-primary text-4xl mb-6">{service.icon}</span>
+                <h4 className="cinematic-text text-xl text-white mb-4 leading-tight">{service.title}</h4>
+                <p className="text-slate-400 text-sm leading-relaxed mb-8">{service.desc}</p>
+              </div>
+              <button 
+                onClick={onOpenContact}
+                className="flex items-center gap-2 text-primary font-bold text-xs tracking-[0.2em] uppercase group-hover:gap-4 transition-all"
+              >
+                TƯ VẤN DỰ ÁN
+                <span className="material-symbols-outlined text-sm">arrow_forward</span>
+              </button>
             </div>
-          </div>
-          
-          <div className="bg-background-dark p-6 flex flex-col justify-between min-h-[350px] group hover:border-primary/50 border border-transparent transition-colors">
-            <div>
-              <span className="material-symbols-outlined text-primary text-3xl mb-6">ads_click</span>
-              <h4 className="cinematic-text text-lg text-white mb-4">TVC & VIRAL<br/>CLIPS</h4>
-              <p className="text-slate-400 text-xs leading-relaxed">Commercial excellence that drives conversions. Hiệu quả cho Brand Manager.</p>
-            </div>
-          </div>
-          
-          <div className="bg-background-dark p-6 flex flex-col justify-between min-h-[350px] group hover:border-primary/50 border border-transparent transition-colors">
-            <div>
-              <span className="material-symbols-outlined text-primary text-3xl mb-6">photo_camera</span>
-              <h4 className="cinematic-text text-lg text-white mb-4">PROFESSIONAL<br/>PHOTOGRAPHY</h4>
-              <p className="text-slate-400 text-xs leading-relaxed">Capturing brand essence through high-fashion lenses. Visual Key Visual đẳng cấp.</p>
-            </div>
-          </div>
-          
-          <div className="bg-background-dark p-6 flex flex-col justify-between min-h-[350px] group hover:border-primary/50 border border-transparent transition-colors">
-            <div>
-              <span className="material-symbols-outlined text-primary text-3xl mb-6">video_settings</span>
-              <h4 className="cinematic-text text-lg text-white mb-4">POST-<br/>PRODUCTION</h4>
-              <p className="text-slate-400 text-xs leading-relaxed">World-class color grading & VFX. Hoàn thiện từng pixel theo chuẩn Hollywood.</p>
-            </div>
-          </div>
-          
-          <div className="bg-background-dark p-6 flex flex-col justify-between min-h-[350px] group hover:border-primary/50 border border-transparent transition-colors">
-            <div>
-              <span className="material-symbols-outlined text-primary text-3xl mb-6">lightbulb</span>
-              <h4 className="cinematic-text text-lg text-white mb-4">CREATIVE<br/>CONCEPT</h4>
-              <p className="text-slate-400 text-xs leading-relaxed">Storyboarding & strategic direction. Định hình thông điệp từ cốt lõi.</p>
-            </div>
-          </div>
-
-          <div className="bg-background-dark p-6 flex flex-col justify-between min-h-[350px] group hover:border-primary/50 border border-transparent transition-colors">
-            <div>
-              <span className="material-symbols-outlined text-primary text-3xl mb-6">smart_toy</span>
-              <h4 className="cinematic-text text-lg text-white mb-4">AI<br/>PRODUCTION</h4>
-              <p className="text-slate-400 text-xs leading-relaxed">Ứng dụng AI tiên tiến trong sản xuất hình ảnh và video. Tối ưu chi phí và thời gian.</p>
-            </div>
-          </div>
+          ))}
         </div>
       </div>
     </section>
@@ -175,30 +153,34 @@ const Services = () => {
 };
 
 const mvData = [
-  { year: "2026", title: "7 ANH EM 2 (M/V)", artist: "Huỳnh James x Pjnboys ft Seaflows", id: "vl6DauYV-ik" },
-  { year: "2026", title: "CUỐI TUẦN", artist: "HUỲNH JAMES x PJNBOYS", id: "h8LsKymLIEA" },
-  { year: "2025", title: "KHÔNG THỬ SAO BIẾT", artist: "VIN X Đỗ Hiếu X Only C", id: "KU2rxK6_wvg" },
-  { year: "2025", title: "ATLAS", artist: "jmancurly", id: "J_ElLtGjW2A" },
-  { year: "2025", title: "WORK ON MYSELF", artist: "jmancurly", id: "NBHCJI38AYs" },
-  { year: "2025", title: "LƯU ANH VÀO BỘ NHỚ", artist: "NGÔ TRÚC LINH FT. HUY TÍT", id: "Y6dBpy731ts" },
-  { year: "2025", title: "CHÚNG TA CHỈ LÀ NHỮNG ĐỨA TRẺ", artist: "FREAKY ft. APJ", id: "phgI-TefJCw" },
-  { year: "2025", title: "LOI EM DOWN", artist: "PJNBOYS - TRI", id: "ee-kpnyOOFk" },
-  { year: "2025", title: "Don't Sleep", artist: "Pjnboys x TCONK x Minh Huy", id: "O1fmSkYYhIw" },
-  { year: "2025", title: "WE ARE THE FIRE", artist: "Huỳnh James x Pjnboys", id: "hhTUoe-VUwQ" },
-  { year: "2024", title: "TÔI LÀ DÂN 37", artist: "DUY MẠNH", id: "YgeiKEH9YGQ" },
-  { year: "2024", title: "RIZZ MAN", artist: "jmancurly", id: "d07wPVpJA1U" },
-  { year: "2024", title: "LỤM", artist: "Pjnboys, Huỳnh James, Hata, Lil Nhí, Tconk, Su", id: "KU2rxK6_wvg" },
-  { year: "2024", title: "CẦU VỪA ĐỦ XÀI", artist: "Huỳnh James x Pjnboys", id: "8s-CAWqjsjo" },
-  { year: "2024", title: "Ngày Tháng Năm (Live)", artist: "Whee!", id: "vs82XD_wNR0" },
-  { year: "2024", title: "Tháng Năm Rực Rỡ", artist: "Doãn Hiếu", id: "_pltSfc5U7Q" },
-  { year: "2024", title: "Chờ Chia Tay", artist: "ÁNH SÁNG AZA", id: "p9U0KjMySY0" },
-  { year: "2024", title: "VỀ NHÀ THÔI", artist: "DOÃN HIẾU X KHÁNH X NGUYÊN JENDA", id: "q6he9HFsg60" },
-  { year: "2024", title: "ĐAU ĐẾN NỖI SỢ YÊU", artist: "NGUYỄN MINH HOÀNG", id: "WHOzVn9bdkA" },
-  { year: "2023", title: "Tết Nhà Là Tết Nhất", artist: "LG x Bùi Công Nam", id: "VPN10JXw9tc" },
-  { year: "2023", title: "NGÀY THÁNG NĂM", artist: "WHEE!", id: "_xnYXvekGmw" },
-  { year: "2023", title: "Tâm tư nơi đây", artist: "Nhanhmedia", id: "TVtojJFzW-Y" },
-  { year: "2023", title: "VÔ TREE", artist: "KEYO", id: "dIhDbAI9lAY" },
-  { year: "2022", title: "Muốn nói với em", artist: "Nhanhmedia", id: "5TlJtpytXtk" }
+  { year: "SẢN PHẨM TIÊU BIỂU", title: "Muốn nói với em | Official MV", artist: "K-ICM FT. NHANHMEDIA", id: "5TlJtpytXtk" },
+  { year: "SẢN PHẨM TIÊU BIỂU", title: "TỰ SỰ - ORANGE x THUẬN NGUYỄN | QUA BỂN LÀM CHI OST", artist: "ORANGE x THUẬN NGUYỄN", id: "C4QhZvTqhnI" },
+  { year: "SẢN PHẨM TIÊU BIỂU", title: "XIN - Nhóm Nhạc ... (Đạt G, B Ray, Masew) | OFFICIAL MV", artist: "Đạt G, B Ray, Masew", id: "ZVZbjw9Dk7Y" },
+  { year: "SẢN PHẨM TIÊU BIỂU", title: "LG x Bùi Công Nam - Tết Nhà Là Tết Nhất | Official MV", artist: "LG x Bùi Công Nam", id: "VPN10JXw9tc" },
+  { year: "2026", title: "7 ANH EM 2 (M/V) - Huỳnh James x Pjnboys ft Seaflows", artist: "Huỳnh James x Pjnboys ft Seaflows", id: "vl6DauYV-ik" },
+  { year: "2026", title: "CUỐI TUẦN - HUỲNH JAMES x PJNBOYS | Official MV", artist: "HUỲNH JAMES x PJNBOYS", id: "h8LsKymLIEA" },
+  { year: "2025", title: "KHÔNG THỬ SAO BIẾT | VIN X Đỗ Hiếu X Only C | TOP MIQVN 2025 | Official MV 4K", artist: "VIN X Đỗ Hiếu X Only C", id: "KU2rxK6_wvg" },
+  { year: "2025", title: "jmancurly - ATLAS", artist: "jmancurly", id: "J_ElLtGjW2A" },
+  { year: "2025", title: "jmancurly - WORK ON MYSELF", artist: "jmancurly", id: "NBHCJI38AYs" },
+  { year: "2025", title: "NGÔ TRÚC LINH - LƯU ANH VÀO BỘ NHỚ | FT. HUY TÍT | MUSIC VIDEO", artist: "NGÔ TRÚC LINH FT. HUY TÍT", id: "Y6dBpy731ts" },
+  { year: "2025", title: "FREAKY ft. APJ - CHÚNG TA CHỈ LÀ NHỮNG ĐỨA TRẺ | Official Music Video", artist: "FREAKY ft. APJ", id: "phgI-TefJCw" },
+  { year: "2025", title: "PJNBOYS - TRI | LOI EM DOWN (Official MV)", artist: "PJNBOYS - TRI", id: "ee-kpnyOOFk" },
+  { year: "2025", title: "Pjnboys x TCONK x Minh Huy - Don't Sleep | Official MV", artist: "Pjnboys x TCONK x Minh Huy", id: "O1fmSkYYhIw" },
+  { year: "2025", title: "Huỳnh James x Pjnboys - WE ARE THE FIRE | Official MV", artist: "Huỳnh James x Pjnboys", id: "hhTUoe-VUwQ" },
+  { year: "2024", title: "DUY MẠNH - TÔI LÀ DÂN 37 (Official MV)", artist: "DUY MẠNH", id: "YgeiKEH9YGQ" },
+  { year: "2024", title: "jmancurly - RIZZ MAN", artist: "jmancurly", id: "d07wPVpJA1U" },
+  { year: "2024", title: "Pjnboys, Huỳnh James, Hata, Lil Nhí, Tconk, Su - LỤM | Official MV", artist: "Pjnboys, Huỳnh James, Hata, Lil Nhí, Tconk, Su", id: "KU2rxK6_wvg" },
+  { year: "2024", title: "Huỳnh James x Pjnboys - CẦU VỪA ĐỦ XÀI | Official MV", artist: "Huỳnh James x Pjnboys", id: "8s-CAWqjsjo" },
+  { year: "2024", title: "Whee! - Ngày Tháng Năm (Live Session)", artist: "Whee!", id: "vs82XD_wNR0" },
+  { year: "2024", title: "Doãn Hiếu - Tháng Năm Rực Rỡ | Official MV", artist: "Doãn Hiếu", id: "_pltSfc5U7Q" },
+  { year: "2024", title: "ÁNH SÁNG AZA - Chờ Chia Tay | Official MV", artist: "ÁNH SÁNG AZA", id: "p9U0KjMySY0" },
+  { year: "2024", title: "DOÃN HIẾU X KHÁNH X NGUYÊN JENDA - VỀ NHÀ THÔI | Official MV", artist: "DOÃN HIẾU X KHÁNH X NGUYÊN JENDA", id: "q6he9HFsg60" },
+  { year: "2024", title: "NGUYỄN MINH HOÀNG - ĐAU ĐẾN NỖI SỢ YÊU | Official MV", artist: "NGUYỄN MINH HOÀNG", id: "WHOzVn9bdkA" },
+  { year: "2023", title: "LG x Bùi Công Nam - Tết Nhà Là Tết Nhất | Official MV", artist: "LG x Bùi Công Nam", id: "VPN10JXw9tc" },
+  { year: "2023", title: "WHEE! - NGÀY THÁNG NĂM | Official MV", artist: "WHEE!", id: "_xnYXvekGmw" },
+  { year: "2023", title: "Nhanhmedia - Tâm tư nơi đây | Official MV", artist: "Nhanhmedia", id: "TVtojJFzW-Y" },
+  { year: "2023", title: "KEYO - VÔ TREE | Official MV", artist: "KEYO", id: "dIhDbAI9lAY" },
+  { year: "2022", title: "Nhanhmedia - Muốn nói với em | Official MV", artist: "Nhanhmedia", id: "5TlJtpytXtk" }
 ];
 
 const MusicVideos = () => {
@@ -210,7 +192,11 @@ const MusicVideos = () => {
     return acc;
   }, {} as Record<string, typeof mvData>);
 
-  const years = Object.keys(groupedMvData).sort((a, b) => parseInt(b) - parseInt(a));
+  const years = Object.keys(groupedMvData).sort((a, b) => {
+    if (a === "SẢN PHẨM TIÊU BIỂU") return -1;
+    if (b === "SẢN PHẨM TIÊU BIỂU") return 1;
+    return parseInt(b) - parseInt(a);
+  });
 
   return (
     <section className="bg-black text-white py-[60px] px-[20px] font-sans border-b border-white/5" id="music-videos" style={{ fontFamily: "'Inter', sans-serif" }}>
@@ -246,7 +232,7 @@ const MusicVideos = () => {
                         )}
                       </div>
                       <div className="flex-1 min-w-0">
-                        <div className="text-[0.9rem] font-semibold truncate text-white">{mv.title}</div>
+                        <div className="text-[0.9rem] font-semibold text-white line-clamp-2 leading-tight mb-1">{mv.title}</div>
                         <div className="text-[0.7rem] text-slate-400 truncate uppercase tracking-wider">{mv.artist}</div>
                       </div>
                     </div>
@@ -294,18 +280,20 @@ const MusicVideos = () => {
 
 const BehindTheScenes = () => {
   const images = [
-    "https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?q=80&w=2056&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1516280440502-65f536af1270?q=80&w=2070&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?q=80&w=2070&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1536440136628-849c177e76a1?q=80&w=1925&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1485846234645-a62644f84728?q=80&w=2059&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?q=80&w=2070&auto=format&fit=crop"
+    { src: "https://images.unsplash.com/photo-1485846234645-a62644f84728?q=80&w=2059&auto=format&fit=crop", name: "SET_01.jpg" },
+    { src: "https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?q=80&w=2071&auto=format&fit=crop", name: "SET_02.jpg" },
+    { src: "https://images.unsplash.com/photo-1536440136628-849c177e76a1?q=80&w=2025&auto=format&fit=crop", name: "SET_03.jpg" },
+    { src: "https://images.unsplash.com/photo-1478720568477-152d9b164e26?q=80&w=2070&auto=format&fit=crop", name: "SET_04.jpg" },
+    { src: "https://images.unsplash.com/photo-1512733596533-7b00ccf8ebaf?q=80&w=2064&auto=format&fit=crop", name: "SET_05.jpg" },
+    { src: "https://images.unsplash.com/photo-1518676590629-3dcbd9c5a5c9?q=80&w=2064&auto=format&fit=crop", name: "SET_06.jpg" },
+    { src: "https://images.unsplash.com/photo-1524758631624-e2822e304c36?q=80&w=2070&auto=format&fit=crop", name: "SET_07.jpg" },
+    { src: "https://images.unsplash.com/photo-1505686994434-e3cc5abf1330?q=80&w=2073&auto=format&fit=crop", name: "SET_08.jpg" }
   ];
 
   return (
     <section className="bg-background-dark py-24 px-6 lg:px-20 text-center border-b border-white/5 overflow-hidden" id="behind-the-scenes">
       <div className="mb-16">
-        <p className="text-primary font-bold text-xs tracking-[0.2em] uppercase mb-4">Behind The Scenes</p>
+        <p className="text-primary font-bold text-xs tracking-[0.2em] uppercase mb-4">HẬU TRƯỜNG</p>
         <h2 className="cinematic-text text-4xl md:text-5xl text-white mb-6">QUY TRÌNH KIẾN TẠO</h2>
         <div className="w-16 h-[2px] bg-primary mx-auto mb-6"></div>
         <p className="text-slate-400 max-w-2xl mx-auto leading-relaxed">
@@ -314,15 +302,18 @@ const BehindTheScenes = () => {
       </div>
 
       <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {images.map((src, index) => (
-            <div key={index} className="relative aspect-video overflow-hidden group">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-1">
+          {images.map((img, index) => (
+            <div key={index} className="relative aspect-square overflow-hidden group border border-white/5">
               <img 
-                src={src} 
-                alt={`Behind the scenes ${index + 1}`} 
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" 
+                src={img.src} 
+                alt={img.name} 
+                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" 
+                referrerPolicy="no-referrer"
               />
-              <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors"></div>
+              <div className="absolute inset-0 bg-black/40 group-hover:bg-transparent transition-colors flex items-end p-2">
+                <span className="text-[8px] font-mono text-white/50 tracking-widest uppercase">{img.name}</span>
+              </div>
             </div>
           ))}
         </div>
@@ -351,12 +342,12 @@ const OriginalContent = ({ onOpenVideo }: { onOpenVideo: (url: string) => void }
   useEffect(() => {
     const fetchYouTubeVideos = async () => {
       try {
-        const API_KEY = 'AIzaSyABhI26Jzccjo-6xBzC7GcRc3OlBEsfWFw';
-        // Tìm kiếm video mới nhất từ từ khóa "nhanhmedia" (Bạn có thể thêm &channelId=YOUR_CHANNEL_ID để lấy chính xác video từ kênh)
-        const response = await fetch(`https://www.googleapis.com/youtube/v3/search?key=${API_KEY}&q=nhanhmedia&part=snippet,id&order=date&maxResults=9&type=video`);
+        const API_KEY = import.meta.env.VITE_YOUTUBE_API_KEY || 'AIzaSyABhI26Jzccjo-6xBzC7GcRc3OlBEsfWFw';
+        // Use search query for the handle to get results if channelId is unknown
+        const response = await fetch(`https://www.googleapis.com/youtube/v3/search?key=${API_KEY}&q=nhanhmedia1201&part=snippet,id&order=date&maxResults=3&type=video`);
         const data = await response.json();
         
-        if (data.items) {
+        if (data.items && data.items.length > 0) {
           const formattedVideos = data.items.map((item: any) => ({
             title: item.snippet.title,
             subtitle: item.snippet.channelTitle,
@@ -364,9 +355,52 @@ const OriginalContent = ({ onOpenVideo }: { onOpenVideo: (url: string) => void }
             url: `https://www.youtube.com/watch?v=${item.id.videoId}`
           }));
           setYoutubeVideos(formattedVideos);
+        } else {
+          // Fallback to 3 featured videos if API returns nothing or fails
+          setYoutubeVideos([
+            {
+              title: 'Vị ngon bùng nổ" GreyD cực mê - tvc popeye',
+              subtitle: 'NHANH MEDIA',
+              img: 'https://img.youtube.com/vi/oe6sWPTA2gA/maxresdefault.jpg',
+              url: 'https://www.youtube.com/watch?v=oe6sWPTA2gA'
+            },
+            {
+              title: 'Hậu trường sản xuất MV triệu view',
+              subtitle: 'NHANH MEDIA',
+              img: 'https://img.youtube.com/vi/6G05q3wc_uE/maxresdefault.jpg',
+              url: 'https://www.youtube.com/watch?v=6G05q3wc_uE'
+            },
+            {
+              title: 'Quy trình sáng tạo nội dung số 2025',
+              subtitle: 'NHANH MEDIA',
+              img: 'https://img.youtube.com/vi/jLEgJBk6yE8/maxresdefault.jpg',
+              url: 'https://www.youtube.com/watch?v=jLEgJBk6yE8'
+            }
+          ]);
         }
       } catch (error) {
         console.error("Error fetching YouTube videos:", error);
+        // Fallback on error
+        setYoutubeVideos([
+          {
+            title: 'Vị ngon bùng nổ" GreyD cực mê - tvc popeye',
+            subtitle: 'NHANH MEDIA',
+            img: 'https://img.youtube.com/vi/oe6sWPTA2gA/maxresdefault.jpg',
+            url: 'https://www.youtube.com/watch?v=oe6sWPTA2gA'
+          },
+          {
+            title: 'Hậu trường sản xuất MV triệu view',
+            subtitle: 'NHANH MEDIA',
+            img: 'https://img.youtube.com/vi/6G05q3wc_uE/maxresdefault.jpg',
+            url: 'https://www.youtube.com/watch?v=6G05q3wc_uE'
+          },
+          {
+            title: 'Quy trình sáng tạo nội dung số 2025',
+            subtitle: 'NHANH MEDIA',
+            img: 'https://img.youtube.com/vi/jLEgJBk6yE8/maxresdefault.jpg',
+            url: 'https://www.youtube.com/watch?v=jLEgJBk6yE8'
+          }
+        ]);
       } finally {
         setLoading(false);
       }
@@ -396,13 +430,34 @@ const OriginalContent = ({ onOpenVideo }: { onOpenVideo: (url: string) => void }
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
           <span className="text-primary font-bold tracking-[0.4em] uppercase text-xs mb-4 block">BLOG & VLOG</span>
-          <h2 className="cinematic-text text-4xl md:text-5xl text-white italic">ORIGINAL <span className="text-primary">CONTENT</span></h2>
+          <h2 className="cinematic-text text-4xl md:text-5xl text-white italic">NỘI DUNG <span className="text-primary">SÁNG TẠO</span></h2>
         </div>
         
-        <div className="mb-16">
+        <div className="mb-24">
           <h3 className="text-white font-bold tracking-widest text-lg uppercase mb-8 flex items-center gap-2">
-            <Youtube className="w-6 h-6 text-primary" /> YOUTUBE CHANNELS
+            <Youtube className="w-6 h-6 text-primary" /> KÊNH YOUTUBE CHÍNH THỨC
           </h3>
+          
+          <div className="flex justify-center mb-12">
+            <div className="relative p-6 bg-gradient-to-br from-red-600/20 to-transparent rounded-2xl border border-white/10 shadow-[0_0_50px_rgba(255,0,0,0.1)] overflow-hidden max-w-[820px] w-full flex flex-col md:flex-row items-center gap-8">
+              <div className="w-24 h-24 rounded-full overflow-hidden border-2 border-primary/50 flex-shrink-0">
+                <img src="https://scontent.fsgn2-11.fna.fbcdn.net/v/t39.30808-6/518287405_24879572944962899_2877507918607518568_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=2a1932&_nc_ohc=1JnjVLjafIcQ7kNvwGNVEey&_nc_oc=AdnpkLeZn5zDeKIgHo77PXKmyJDdTRm31iEGGWGH8bTXEuI72KvtlvJMkEAhJgpSp8xXnvSuXUKksU_i8hd0_DFP&_nc_zt=23&_nc_ht=scontent.fsgn2-11.fna&_nc_gid=Mj_Upt5EySo1F7XdchejxA&_nc_ss=8&oh=00_AfwMLCEeZLYWn-6geAOTyy690hX0czXIVfaN87PI6LMOZA&oe=69AE26D7" alt="Nhanh Media" className="w-full h-full object-cover" />
+              </div>
+              <div className="flex-1 text-center md:text-left">
+                <h4 className="text-2xl font-bold text-white mb-2">NHANH MEDIA ENTERTAINMENT</h4>
+                <p className="text-slate-400 text-sm mb-4">@nhanhmedia1201 • 1.2K video • 300M+ views</p>
+                <a 
+                  href="https://www.youtube.com/@nhanhmedia1201" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 bg-red-600 text-white px-6 py-2 rounded-full font-bold text-xs uppercase tracking-widest hover:bg-red-700 transition-all"
+                >
+                  <Youtube className="w-4 h-4" /> ĐĂNG KÝ KÊNH
+                </a>
+              </div>
+            </div>
+          </div>
+
           {loading ? (
             <div className="flex justify-center items-center h-48">
               <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-primary"></div>
@@ -410,7 +465,7 @@ const OriginalContent = ({ onOpenVideo }: { onOpenVideo: (url: string) => void }
           ) : (
             <>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                {youtubeVideos.length > 0 ? youtubeVideos.slice(0, visibleYoutubeCount).map((video, idx) => (
+                {youtubeVideos.map((video, idx) => (
                   <div key={idx} onClick={() => onOpenVideo(video.url)} className="group relative overflow-hidden aspect-video bg-slate-900 cursor-pointer">
                     <img className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" alt={video.title} src={video.img}/>
                     <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-6">
@@ -421,35 +476,35 @@ const OriginalContent = ({ onOpenVideo }: { onOpenVideo: (url: string) => void }
                       <span className="material-symbols-outlined text-6xl text-white/80">play_circle</span>
                     </div>
                   </div>
-                )) : (
-                  <div className="col-span-3 text-center text-slate-500 py-10">Không tìm thấy video nào.</div>
-                )}
+                ))}
               </div>
-              {youtubeVideos.length > visibleYoutubeCount && (
-                <div className="mt-10 text-center">
-                  <button 
-                    onClick={handleLoadMoreYoutube}
-                    className="border border-white/20 text-white px-8 py-3 text-sm tracking-widest uppercase hover:bg-white hover:text-black transition-colors"
-                  >
-                    Xem thêm
-                  </button>
-                </div>
-              )}
+              <div className="mt-10 text-center">
+                <a 
+                  href="https://www.youtube.com/@nhanhmedia1201"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-block border border-white/20 text-white px-8 py-3 text-sm tracking-widest uppercase hover:bg-white hover:text-black transition-colors"
+                >
+                  Xem trên YouTube
+                </a>
+              </div>
             </>
           )}
         </div>
 
-        <div>
+        <div className="mt-20">
           <h3 className="text-white font-bold tracking-widest text-lg uppercase mb-8 flex items-center gap-2">
-            <TikTokIcon className="w-6 h-6 text-primary" /> TIKTOK SHORTS
+            <TikTokIcon className="w-6 h-6 text-primary" /> TIKTOK NGẮN
           </h3>
           <div className="flex justify-center">
-            <blockquote className="tiktok-embed" cite="https://www.tiktok.com/@nhanhmedia" data-unique-id="nhanhmedia" data-embed-type="creator" style={{ maxWidth: '780px', minWidth: '288px' }}>
-              <section>
-                <a target="_blank" rel="noopener noreferrer" href="https://www.tiktok.com/@nhanhmedia?refer=creator_embed">@nhanhmedia</a>
-              </section>
-            </blockquote>
-            <script async src="https://www.tiktok.com/embed.js"></script>
+            <div className="relative p-4 bg-gradient-to-br from-primary/20 to-transparent rounded-2xl border border-white/10 shadow-[0_0_50px_rgba(244,27,53,0.1)] overflow-hidden max-w-[820px] w-full">
+              <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary/50 to-transparent"></div>
+              <blockquote className="tiktok-embed" cite="https://www.tiktok.com/@nhanhmedia" data-unique-id="nhanhmedia" data-embed-type="creator" style={{ maxWidth: '780px', minWidth: '288px' }}>
+                <section>
+                  <a target="_blank" rel="noopener noreferrer" href="https://www.tiktok.com/@nhanhmedia?refer=creator_embed">@nhanhmedia</a>
+                </section>
+              </blockquote>
+            </div>
           </div>
           <div className="mt-10 text-center">
             <a 
@@ -482,7 +537,7 @@ const Testimonials = () => (
   <section className="py-24 px-6 lg:px-20 bg-background-dark" id="testimonials">
     <div className="max-w-7xl mx-auto">
       <div className="text-center mb-16">
-        <span className="text-primary font-bold tracking-[0.4em] uppercase text-xs mb-4 block">TRUST & QUALITY</span>
+        <span className="text-primary font-bold tracking-[0.4em] uppercase text-xs mb-4 block">NIỀM TIN & CHẤT LƯỢNG</span>
         <h2 className="cinematic-text text-4xl md:text-5xl text-white italic">ĐỐI TÁC NÓI GÌ VỀ CHÚNG TÔI</h2>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -513,6 +568,31 @@ const Testimonials = () => (
   </section>
 );
 
+const Achievements = () => {
+  const stats = [
+    { label: "SẢN PHẨM HOÀN THÀNH", value: "150+", icon: "movie" },
+    { label: "TỔNG LƯỢT VIEWS", value: "300M+", icon: "trending_up" },
+    { label: "CHIẾN DỊCH ĐỘT PHÁ", value: "20+", icon: "rocket_launch" },
+    { label: "KHÁCH HÀNG TIN TƯỞNG", value: "100+", icon: "groups" }
+  ];
+
+  return (
+    <section className="py-20 bg-black border-y border-white/5">
+      <div className="max-w-7xl mx-auto px-6 lg:px-20">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+          {stats.map((stat, idx) => (
+            <div key={idx} className="text-center group">
+              <span className="material-symbols-outlined text-primary text-4xl mb-4 block group-hover:scale-110 transition-transform">{stat.icon}</span>
+              <div className="text-4xl md:text-5xl font-black text-white mb-2 cinematic-text">{stat.value}</div>
+              <div className="text-[10px] tracking-[0.3em] text-slate-500 uppercase font-bold">{stat.label}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
 const TrustedBy = () => {
   const brands = [
     "LG", "Popeyes", "TSUBAKI", "BCNV", "Degrey", "Maybelline", "Omachi",
@@ -530,27 +610,71 @@ const TrustedBy = () => {
     "'Space Grotesk', sans-serif"
   ];
 
+  // Split brands into 3 rows for a more "crowded" look
+  const row1 = brands.slice(0, 17);
+  const row2 = brands.slice(17, 34);
+  const row3 = brands.slice(34);
+
   return (
-    <section className="py-16 bg-background-dark border-y border-white/5 overflow-hidden" id="trusted-by">
-      <div className="text-center mb-10">
-        <span className="text-[#D4AF37] font-bold tracking-[0.2em] uppercase text-xs">TRUSTED BY LEADING BRANDS & ARTISTS</span>
+    <section className="py-24 bg-background-dark border-y border-white/5 overflow-hidden" id="trusted-by">
+      <div className="text-center mb-16">
+        <span className="text-[#D4AF37] font-bold tracking-[0.4em] uppercase text-xs block mb-2">PARTNERS & COLLABORATORS</span>
+        <h2 className="cinematic-text text-3xl md:text-5xl text-white italic">ĐỐI TÁC CHIẾN LƯỢC</h2>
       </div>
       
-      <div className="relative flex overflow-x-hidden group">
-        <div className="animate-marquee whitespace-nowrap flex items-center gap-16 py-4">
-          {brands.map((brand, idx) => (
-            <span key={idx} style={{ fontFamily: fonts[idx % fonts.length] }} className="text-white/50 text-3xl tracking-widest hover:text-white transition-colors cursor-default">
-              {brand}
-            </span>
-          ))}
+      <div className="flex flex-col gap-8">
+        {/* Row 1 */}
+        <div className="relative flex overflow-x-hidden">
+          <div className="animate-marquee whitespace-nowrap flex items-center gap-12 py-2">
+            {row1.map((brand, idx) => (
+              <span key={idx} style={{ fontFamily: fonts[idx % fonts.length] }} className="text-white/30 text-2xl md:text-4xl tracking-widest hover:text-primary transition-colors cursor-default">
+                {brand}
+              </span>
+            ))}
+          </div>
+          <div className="absolute top-0 animate-marquee2 whitespace-nowrap flex items-center gap-12 py-2">
+            {row1.map((brand, idx) => (
+              <span key={`dup1-${idx}`} style={{ fontFamily: fonts[idx % fonts.length] }} className="text-white/30 text-2xl md:text-4xl tracking-widest hover:text-primary transition-colors cursor-default">
+                {brand}
+              </span>
+            ))}
+          </div>
         </div>
-        
-        <div className="absolute top-0 animate-marquee2 whitespace-nowrap flex items-center gap-16 py-4">
-          {brands.map((brand, idx) => (
-            <span key={`dup-${idx}`} style={{ fontFamily: fonts[idx % fonts.length] }} className="text-white/50 text-3xl tracking-widest hover:text-white transition-colors cursor-default">
-              {brand}
-            </span>
-          ))}
+
+        {/* Row 2 - Reverse direction */}
+        <div className="relative flex overflow-x-hidden">
+          <div className="animate-marquee-reverse whitespace-nowrap flex items-center gap-12 py-2">
+            {row2.map((brand, idx) => (
+              <span key={idx} style={{ fontFamily: fonts[(idx + 3) % fonts.length] }} className="text-white/20 text-3xl md:text-5xl tracking-widest hover:text-primary transition-colors cursor-default">
+                {brand}
+              </span>
+            ))}
+          </div>
+          <div className="absolute top-0 animate-marquee-reverse2 whitespace-nowrap flex items-center gap-12 py-2">
+            {row2.map((brand, idx) => (
+              <span key={`dup2-${idx}`} style={{ fontFamily: fonts[(idx + 3) % fonts.length] }} className="text-white/20 text-3xl md:text-5xl tracking-widest hover:text-primary transition-colors cursor-default">
+                {brand}
+              </span>
+            ))}
+          </div>
+        </div>
+
+        {/* Row 3 */}
+        <div className="relative flex overflow-x-hidden">
+          <div className="animate-marquee whitespace-nowrap flex items-center gap-12 py-2">
+            {row3.map((brand, idx) => (
+              <span key={idx} style={{ fontFamily: fonts[(idx + 5) % fonts.length] }} className="text-white/30 text-2xl md:text-4xl tracking-widest hover:text-primary transition-colors cursor-default">
+                {brand}
+              </span>
+            ))}
+          </div>
+          <div className="absolute top-0 animate-marquee2 whitespace-nowrap flex items-center gap-12 py-2">
+            {row3.map((brand, idx) => (
+              <span key={`dup3-${idx}`} style={{ fontFamily: fonts[(idx + 5) % fonts.length] }} className="text-white/30 text-2xl md:text-4xl tracking-widest hover:text-primary transition-colors cursor-default">
+                {brand}
+              </span>
+            ))}
+          </div>
         </div>
       </div>
     </section>
@@ -575,8 +699,8 @@ const FilmAndOSTProjects = () => {
       <div className="max-w-[1200px] mx-auto flex flex-col lg:flex-row gap-[40px] items-start">
         
         <div className="flex-1 w-full lg:min-w-[300px] lg:max-w-[400px]">
-          <p className="text-primary font-bold text-[0.8rem] tracking-[2px] uppercase mb-[10px]">Cinematic Works</p>
-          <h2 className="text-[2.5rem] mb-[20px] font-extrabold cinematic-text">FILM & OST PROJECTS</h2>
+          <p className="text-primary font-bold text-[0.8rem] tracking-[2px] uppercase mb-[10px]">Tác phẩm Điện ảnh</p>
+          <h2 className="text-[2.5rem] mb-[20px] font-extrabold cinematic-text">DỰ ÁN PHIM & OST</h2>
           <p className="text-[#888] mb-[40px] leading-[1.6]">Hợp tác cùng những đạo diễn và nhà sản xuất hàng đầu Việt Nam để tạo nên những trải nghiệm hình ảnh và âm nhạc mang tính biểu tượng.</p>
 
           <div className="max-h-[500px] overflow-y-auto pr-2 custom-scrollbar">
@@ -635,6 +759,55 @@ const FilmAndOSTProjects = () => {
   );
 };
 
+const CountdownTimer = () => {
+  const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+
+  useEffect(() => {
+    // Set target to 5 days from now
+    const target = new Date();
+    target.setDate(target.getDate() + 5);
+    target.setHours(23, 59, 59, 999);
+    
+    const timer = setInterval(() => {
+      const currentTime = new Date();
+      const difference = target.getTime() - currentTime.getTime();
+      
+      if (difference <= 0) {
+        clearInterval(timer);
+        return;
+      }
+      
+      setTimeLeft({
+        days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+        hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
+        minutes: Math.floor((difference / 1000 / 60) % 60),
+        seconds: Math.floor((difference / 1000) % 60)
+      });
+    }, 1000);
+    
+    return () => clearInterval(timer);
+  }, []);
+
+  return (
+    <div className="flex gap-4 md:gap-8 justify-center mb-12">
+      {[
+        { label: 'Ngày', value: timeLeft.days },
+        { label: 'Giờ', value: timeLeft.hours },
+        { label: 'Phút', value: timeLeft.minutes },
+        { label: 'Giây', value: timeLeft.seconds }
+      ].map((item, idx) => (
+        <div key={idx} className="flex flex-col items-center group">
+          <div className="bg-white/5 backdrop-blur-xl border border-white/10 w-20 h-20 md:w-28 md:h-28 flex items-center justify-center rounded-2xl mb-3 shadow-[0_0_20px_rgba(255,255,255,0.05)] group-hover:border-primary/50 transition-all duration-500 relative overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+            <span className="text-3xl md:text-5xl font-black text-white group-hover:text-primary transition-colors tabular-nums">{String(item.value).padStart(2, '0')}</span>
+          </div>
+          <span className="text-[10px] md:text-xs uppercase tracking-[0.3em] text-white/40 font-bold group-hover:text-white/70 transition-colors">{item.label}</span>
+        </div>
+      ))}
+    </div>
+  );
+};
+
 const CTA = ({ onOpenContact }: { onOpenContact: () => void }) => (
   <section className="py-32 px-6 lg:px-20 bg-black text-center border-y border-white/5 relative overflow-hidden">
     {/* Background glow */}
@@ -645,9 +818,18 @@ const CTA = ({ onOpenContact }: { onOpenContact: () => void }) => (
         ƯU ĐÃI 20% CHO 05 DỰ ÁN <br/>
         <span className="text-primary">ĐĂNG KÝ SỚM NHẤT TRONG THÁNG</span>
       </h2>
-      <p className="text-white/80 text-lg md:text-2xl mb-12 max-w-3xl mx-auto font-light leading-relaxed">
+      <p className="text-white/80 text-lg md:text-2xl mb-10 max-w-3xl mx-auto font-light leading-relaxed">
         Đồng hành cùng Nhanhmedia để nhận ngay gói tư vấn chiến lược hình ảnh <span className="text-[#FFD700] font-bold uppercase tracking-wider bg-[#FFD700]/10 px-3 py-1 rounded-md border border-[#FFD700]/30 inline-block mt-2 md:mt-0">miễn phí</span>.
       </p>
+      
+      <CountdownTimer />
+      
+      <div className="mb-12 p-6 bg-white/5 border border-white/10 rounded-xl max-w-2xl mx-auto">
+        <p className="text-slate-400 text-sm italic">
+          "Team đồng hành kết nối trực tiếp với các nhãn hàng đối tác để mang lại những ưu đãi đặc quyền về chi phí sản xuất và truyền thông cho dự án của bạn."
+        </p>
+      </div>
+
       <button onClick={onOpenContact} className="bg-primary text-white px-12 py-6 cinematic-text text-2xl hover:bg-white hover:text-black transition-all italic font-bold tracking-widest rounded-md shadow-[0_0_30px_rgba(244,27,53,0.3)] hover:shadow-[0_0_50px_rgba(244,27,53,0.5)] transform hover:scale-105">
         [ NHẬN ƯU ĐÃI NGAY ]
       </button>
@@ -655,12 +837,73 @@ const CTA = ({ onOpenContact }: { onOpenContact: () => void }) => (
   </section>
 );
 
+const TVCSection = ({ onOpenContact }: { onOpenContact: () => void }) => {
+  const [showAll, setShowAll] = useState(false);
+  const tvcs = [
+    { id: 'oe6sWPTA2gA', title: 'Vị ngon bùng nổ" GreyD cực mê - tvc popeye' },
+    { id: '6G05q3wc_uE', title: 'TVC QUẢNG CÁO 01' },
+    { id: 'jLEgJBk6yE8', title: 'TVC QUẢNG CÁO 02' },
+    { id: 'nhI5POx3De0', title: 'TVC QUẢNG CÁO 03' },
+    { id: 'V59iWpzW-sQ', title: 'TVC QUẢNG CÁO 04' },
+    { id: 'jvUtHPL5DK4', title: 'TVC QUẢNG CÁO 05' },
+    { id: 'P3Vbr1tpEVw', title: 'TVC QUẢNG CÁO 06' },
+    { id: 'Q9RUqF7vZGM', title: 'TVC QUẢNG CÁO 07' },
+    { id: 'xER-Ci60geI', title: 'TVC QUẢNG CÁO 08' },
+    { id: 'Yr-meWsd1UI', title: 'TVC QUẢNG CÁO 09' },
+  ];
+
+  const visibleTvcs = showAll ? tvcs : tvcs.slice(0, 3);
+
+  return (
+    <section className="bg-background-light py-24 px-6 lg:px-20 border-b border-white/5" id="tvc-projects">
+      <div className="max-w-7xl mx-auto">
+        <div className="text-center mb-16">
+          <span className="text-primary font-bold tracking-[0.4em] uppercase text-xs mb-4 block">Phim Quảng Cáo</span>
+          <h2 className="cinematic-text text-4xl md:text-5xl text-white italic">TVC & <span className="text-primary">QUẢNG CÁO</span></h2>
+        </div>
+        
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {visibleTvcs.map((tvc, idx) => (
+            <div key={idx} className="group relative overflow-hidden aspect-video bg-black border border-white/10 rounded-lg shadow-2xl hover:border-primary/50 transition-all">
+              <iframe 
+                className="w-full h-full" 
+                src={`https://www.youtube.com/embed/${tvc.id}`} 
+                frameBorder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen>
+              </iframe>
+              <div className="absolute bottom-0 left-0 w-full p-4 bg-gradient-to-t from-black to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
+                <h4 className="text-white font-bold text-xs truncate">{tvc.title}</h4>
+              </div>
+            </div>
+          ))}
+        </div>
+        
+        <div className="mt-16 text-center flex flex-col md:flex-row gap-4 justify-center">
+          {!showAll && (
+            <button 
+              onClick={() => setShowAll(true)}
+              className="border border-white/30 text-white px-10 py-4 cinematic-text text-sm hover:bg-white hover:text-black transition-all"
+            >
+              XEM THÊM TVC
+            </button>
+          )}
+          <button onClick={onOpenContact} className="bg-primary text-white px-10 py-4 cinematic-text text-sm hover:bg-white hover:text-black transition-all">
+            TƯ VẤN CHIẾN DỊCH
+          </button>
+        </div>
+      </div>
+    </section>
+  );
+};
+
 const Footer = () => (
   <footer className="bg-black py-20 px-6 lg:px-20 border-t border-white/5">
     <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
       <div className="md:col-span-2">
         <h2 className="cinematic-text text-3xl text-white mb-6 tracking-tighter">NHANH<span className="text-primary">MEDIA</span></h2>
-        <p className="text-slate-400 max-w-sm mb-8">Production House & Visual Agency dẫn đầu tại Việt Nam. Chuyên kiến tạo các di sản thị giác thông qua ngôn ngữ điện ảnh đích thực.</p>
+        <p className="text-slate-400 max-w-sm mb-4">CÔNG TY TNHH TRUYỀN THÔNG VÀ GIẢI TRÍ NHANHMEDIA</p>
+        <p className="text-slate-500 text-xs mb-8 uppercase tracking-widest">Mã số thuế: 0315710998 • Hoạt động từ 2019</p>
         <div className="flex gap-4">
           <a className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-primary transition-colors" href="https://www.facebook.com/Nhanhmedia.Entertainment" target="_blank" rel="noopener noreferrer">
             <Facebook className="w-4 h-4" />
@@ -689,25 +932,28 @@ const Footer = () => (
         </ul>
       </div>
       <div>
-        <h4 className="text-white font-bold text-xs uppercase tracking-[0.3em] mb-6">Địa Chỉ</h4>
+        <h4 className="text-white font-bold text-xs uppercase tracking-[0.3em] mb-6">Liên Hệ</h4>
         <ul className="space-y-3 text-slate-400 text-sm">
           <li className="flex items-start gap-2">
             <span className="material-symbols-outlined text-primary text-sm mt-1">location_on</span>
-            <span>Quận 1, TP. Hồ Chí Minh, Việt Nam</span>
+            <span>49/2/55B Đường số 51, P.14, Q.Gò Vấp, TP.HCM</span>
           </li>
           <li className="flex items-start gap-2">
             <span className="material-symbols-outlined text-primary text-sm mt-1">call</span>
-            <span>(+84) 900 123 456</span>
+            <div className="flex flex-col">
+              <span>0833 601 662 (Director & Founder)</span>
+              <span>0942 048 600 (Producer & Co-founder)</span>
+            </div>
           </li>
           <li className="flex items-start gap-2">
             <span className="material-symbols-outlined text-primary text-sm mt-1">mail</span>
-            <span>contact@nhanhmedia.vn</span>
+            <span>nhanhmedia@gmail.com</span>
           </li>
         </ul>
       </div>
     </div>
     <div className="mt-20 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center text-[10px] text-slate-500 uppercase tracking-widest">
-      <p>© 2024 NHANHMEDIA PRODUCTION HOUSE. ALL RIGHTS RESERVED.</p>
+      <p>© 2026 NHANHMEDIA PRODUCTION HOUSE. ALL RIGHTS RESERVED.</p>
       <div className="flex gap-6 mt-4 md:mt-0">
         <a href="#">Chính sách bảo mật</a>
         <a href="#">Điều khoản sử dụng</a>
@@ -717,14 +963,13 @@ const Footer = () => (
 );
 
 import VideoModal from './components/VideoModal';
-import ContactModal from './components/ContactModal';
 
 const Quote = () => (
   <section className="py-24 px-6 lg:px-20 bg-background-dark flex justify-center items-center text-center border-y border-white/5" id="about-us">
     <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center gap-12">
       <div className="w-full md:w-1/3">
         <div className="relative aspect-[3/4] w-full max-w-[300px] mx-auto overflow-hidden rounded-sm border border-white/10">
-          <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=1974&auto=format&fit=crop" alt="Director Nhảnh Lê" className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700" />
+          <img src="https://scontent.fsgn2-11.fna.fbcdn.net/v/t39.30808-6/518287405_24879572944962899_2877507918607518568_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=2a1932&_nc_ohc=1JnjVLjafIcQ7kNvwGNVEey&_nc_oc=AdnpkLeZn5zDeKIgHo77PXKmyJDdTRm31iEGGWGH8bTXEuI72KvtlvJMkEAhJgpSp8xXnvSuXUKksU_i8hd0_DFP&_nc_zt=23&_nc_ht=scontent.fsgn2-11.fna&_nc_gid=Mj_Upt5EySo1F7XdchejxA&_nc_ss=8&oh=00_AfwMLCEeZLYWn-6geAOTyy690hX0czXIVfaN87PI6LMOZA&oe=69AE26D7" alt="Director Nhảnh Lê" className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700" />
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
           <div className="absolute bottom-6 left-6 text-left">
             <h4 className="cinematic-text text-2xl text-white tracking-widest">NHẢNH LÊ</h4>
@@ -746,9 +991,63 @@ const Quote = () => (
   </section>
 );
 
+const TVCShow = () => {
+  const [showAll, setShowAll] = useState(false);
+  const content = [
+    { id: 'bI7bUu8_blg', title: 'TVC SHOW 01' },
+    { id: 'CJ4sIj4Xwkw', title: 'TVC SHOW 02' },
+    { id: 'a2P90riUv1s', title: 'TVC SHOW 03' },
+    { id: 'NnJ-Vo-3J5I', title: 'TVC SHOW 04' },
+    { id: 'QzzTAokG7CQ', title: 'TVC SHOW 05' },
+    { id: 'p43cW8epZG0', title: 'TVC SHOW 06' },
+    { id: '3WYeUtr0co8', title: 'TVC SHOW 07' },
+    { id: 'cdR0sT-gARo', title: 'TVC SHOW 08' }
+  ];
+
+  const visibleContent = showAll ? content : content.slice(0, 4);
+
+  return (
+    <section className="py-24 px-6 lg:px-20 bg-background-light border-b border-white/5" id="tvc-show">
+      <div className="max-w-7xl mx-auto">
+        <div className="text-center mb-16">
+          <span className="text-primary font-bold tracking-[0.4em] uppercase text-xs mb-4 block">MULTIMEDIA PRODUCTION</span>
+          <h2 className="cinematic-text text-4xl md:text-5xl text-white italic">TVC <span className="text-primary">SHOW</span></h2>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {visibleContent.map((item, idx) => (
+            <div key={idx} className="group relative overflow-hidden aspect-video bg-black border border-white/10 rounded-lg shadow-2xl hover:border-primary/50 transition-all">
+              <iframe 
+                className="w-full h-full" 
+                src={`https://www.youtube.com/embed/${item.id}`} 
+                frameBorder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen>
+              </iframe>
+              <div className="absolute bottom-0 left-0 w-full p-4 bg-gradient-to-t from-black to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
+                <h4 className="text-white font-bold text-xs truncate">{item.title}</h4>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {!showAll && (
+          <div className="mt-12 text-center">
+            <button 
+              onClick={() => setShowAll(true)}
+              className="border border-primary text-primary px-10 py-4 cinematic-text text-sm hover:bg-primary hover:text-white transition-all"
+            >
+              XEM THÊM DỰ ÁN TVC
+            </button>
+          </div>
+        )}
+      </div>
+    </section>
+  );
+};
+
 export default function App() {
   const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
-  const [isContactModalOpen, setIsContactModalOpen] = useState(false);
   const [videoUrl, setVideoUrl] = useState('');
 
   const handleOpenVideo = (url: string) => {
@@ -757,19 +1056,22 @@ export default function App() {
   };
 
   const handleOpenContact = () => {
-    setIsContactModalOpen(true);
+    window.open('https://m.me/Nhanhmedia.Entertainment', '_blank');
   };
 
   return (
     <div className="min-h-screen bg-background-dark text-slate-100 font-display selection:bg-primary selection:text-white">
       <Navbar />
       <Hero onOpenVideo={handleOpenVideo} onOpenContact={handleOpenContact} />
+      <Achievements />
       <TrustedBy />
       <Vision />
-      <Services />
+      <Services onOpenContact={handleOpenContact} />
       <MusicVideos />
-      <OriginalContent onOpenVideo={handleOpenVideo} />
+      <TVCShow />
       <FilmAndOSTProjects />
+      <TVCSection onOpenContact={handleOpenContact} />
+      <OriginalContent onOpenVideo={handleOpenVideo} />
       <BehindTheScenes />
       <Testimonials />
       <Quote />
@@ -788,10 +1090,6 @@ export default function App() {
         isOpen={isVideoModalOpen} 
         onClose={() => setIsVideoModalOpen(false)} 
         videoUrl={videoUrl} 
-      />
-      <ContactModal 
-        isOpen={isContactModalOpen} 
-        onClose={() => setIsContactModalOpen(false)} 
       />
     </div>
   );
